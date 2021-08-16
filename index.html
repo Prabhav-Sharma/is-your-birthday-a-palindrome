@@ -5,21 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome Birthday</title>
-    <style href="styles.css" rel="stylesheet"></style>
+    <link href="styles.css" rel="stylesheet"/>
 </head>
 <body>
     <section>
-    <h1>Is Your Birthday a Palindrome?</h1>
-    <a href="#down-section">Let's Find Out</a>
+        <img  class="hero-image" src="images/calender.svg" />
+    <div class="top-center">
+        
+    <h1 class="main-heading">Is Your Birthday a Palindrome? 🍧</h1>
+    <a href="#down-section">Let's Find Out ↓</a>
+</div>
+
     </section>
     <section>
         <a name="down-section"></a>
-        <h2>How this works: We take your birthday and try to see if it makes a Palindrome in multiple date formats like  MM/DD/YYYY , DD/MM/YYYY, MM/DD/YY format </h2>
-        <h3>Enter your Date Of Birthday Below ⬇️</h3>
+        <div class="down-center">
+        <h2>Enter your Birthday Below:</h3>
         <input id="date" type="date"></input>
         <button id="btn-check">Find Out!</button>
+        <img id="gif" src="images/cal.gif"/>
         <h2 id="output"></h2>
         <h3 id="nearest-palindrome"></h3>
+        <hr>
+        <h3>How this works: We take your birthday and try to see if it makes a Palindrome in multiple date formats like  mm/dd/yyyy , dd/mm/yyyy, mm/dd/yy. </h2>
+            <h3>Privacy Policy: We do not store any information</h3>
+    </div>
     </section>
     
 
