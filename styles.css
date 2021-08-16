@@ -96,3 +96,24 @@ a:hover{
     width: 200px;
 
 }
+.refer-links{
+    height: 50px;
+    width: 75px;
+}
+
+  aside{
+    width: min-content; 
+    height:fit-content; 
+    background: #F3F4F6;
+     float:right;
+     display: block;
+     margin:auto;
+  margin-top: 35vh;
+  margin-right: -10px;
+  opacity: 80%;
+  }
+
+  .linkedIN{
+      width: 75px;
+      height:60px;
+  }
