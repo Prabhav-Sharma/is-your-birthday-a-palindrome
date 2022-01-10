@@ -1,34 +1,33 @@
-function addElement(name) {
-    var element = document.querySelector(name);
-    return element;
-}
+//ES6 Version Code
+const addElement =name => document.querySelector(name);
 
-var btnCheck = addElement("#btn-check");
-var outputStat = addElement("#output");
-var gif=addElement("#gif");
+
+const btnCheck = addElement("#btn-check");
+const outputStat = addElement("#output");
+const gif=addElement("#gif");
 
 gif.setAttribute("style", "display:none");
 
 
 
-function reverseString(string) {
-    var charList = string.split('');
+const reverseString= string => {
+    let charList = string.split('');
 
-    var reverseList = charList.reverse();
+    let reverseList = charList.reverse();
 
-    var reverseString = reverseList.join("");
+    let reverseString = reverseList.join("");
 
     return reverseString;
-}
+};
 
 
 
 
-btnCheck.addEventListener("click", function clickHandler() {
+btnCheck.addEventListener("click", () => {
     outputStat.innerText = ""
     addElement("#nearest-palindrome").innerText ="";
   
-    var dateInput = addElement("#date").value;
+    let dateInput = addElement("#date").value;
     if(dateInput ===""){
         outputStat.innerText = "Would it be weird if I asked you for a date?"
         addElement("#nearest-palindrome").innerText ="";
@@ -38,15 +37,15 @@ btnCheck.addEventListener("click", function clickHandler() {
     gif.setAttribute("style", "display:block");
 
     
-    setTimeout(function(){
+    setTimeout(_=>{
     gif.setAttribute("style", "display:none");
 
-    var charList = dateInput.split("-");
-    var year = Number(charList[0]);
-    var month = Number(charList[1]);
-    var day = Number(charList[2]);
+    let charList = dateInput.split("-");
+    let year = Number(charList[0]);
+    let month = Number(charList[1]);
+    let day = Number(charList[2]);
 
-    var date = {
+    let date = {
         day: day,
         month: month,
         year: year
@@ -56,18 +55,18 @@ btnCheck.addEventListener("click", function clickHandler() {
         outputStat.innerText = "Woohoo!! Your Birthday is a Palindrome!"
         addElement("#nearest-palindrome").innerText ="";
     } else {
-        var previousPalindrome = checkPreviousPalindrome(date);
-        var nextPalindrome = checkNextPalindrome(date);
+        let previousPalindrome = checkPreviousPalindrome(date);
+        let nextPalindrome = checkNextPalindrome(date);
 
-        var nearestPalindrome = whichHasLessDifference(previousPalindrome, nextPalindrome);
-        var palindromeDate = nearestPalindrome[1];
-        var days = nearestPalindrome[0];
+        let nearestPalindrome = whichHasLessDifference(previousPalindrome, nextPalindrome);
+        let palindromeDate = nearestPalindrome[1];
+        let days = nearestPalindrome[0];
 
         outputStat.innerText = "Whoops! Sorry, your birthday is not a palindrome"
-        addElement("#nearest-palindrome").innerText = "Nearest palindrome: " + palindromeDate.day + "/" + palindromeDate.month + "/" + palindromeDate.year + ".\n  You missed it by " + days + " days";
+        addElement("#nearest-palindrome").innerText = `Nearest palindrome: ${palindromeDate.day}/${palindromeDate.month}/${palindromeDate.year}.\n  You missed it by ${days}  days`;
 
     }
-         }, 2750);
+         }, Math.random()*3000);
 
    
    
@@ -78,21 +77,23 @@ btnCheck.addEventListener("click", function clickHandler() {
 
 })
 
-function whichHasLessDifference(one, two) {
+const whichHasLessDifference= (one, two) => one[0]> two[0]? two:one; 
+/*{
     if (one[0] > two[0]) {
         return two;
     } else {
         return one;
     }
 }
+*/
 
 
-function getPreviousDay(date) {
-    var day = parseInt(date.day) - 1;
-    var month = parseInt(date.month);
-    var year = parseInt(date.year);
+const getPreviousDay= date => {
+    let day = parseInt(date.day) - 1;
+    let month = parseInt(date.month);
+    let year = parseInt(date.year);
 
-    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     if (month === 3) {
         if (isLeapYear(year)) {
@@ -125,13 +126,13 @@ function getPreviousDay(date) {
 
 
 
-function checkPreviousPalindrome(date) {
-    var counter = 0;
-    var previousDay = getPreviousDay(date);
+const checkPreviousPalindrome= date => {
+    let counter = 0;
+    let previousDay = getPreviousDay(date);
 
     while (true) {
         counter++;
-        var isPalindrome = checkPalindromeForAll(previousDay);
+        let isPalindrome = checkPalindromeForAll(previousDay);
         if (isPalindrome) {
             break;
         }
@@ -143,7 +144,7 @@ function checkPreviousPalindrome(date) {
 
 }
 
-function isLeapYear(year) {
+const isLeapYear =year => {
     if (year % 400 === 0) {
         return true;
     }
@@ -156,13 +157,13 @@ function isLeapYear(year) {
     return false;
 }
 
-function getNextDay(date) {
+const getNextDay = date=> {
 
-    var day = parseInt(date.day) + 1;
-    var month = parseInt(date.month);
-    var year = parseInt(date.year);
+    let day = parseInt(date.day) + 1;
+    let month = parseInt(date.month);
+    let year = parseInt(date.year);
 
-    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     if (month === 2) {
         if (isLeapYear(year)) {
             if (day > 29) {
@@ -195,13 +196,13 @@ function getNextDay(date) {
 }
 
 
-function checkNextPalindrome(date) {
-    var counter = 0;
-    var nextDay = getNextDay(date);
+const checkNextPalindrome = date => {
+    let counter = 0;
+    let nextDay = getNextDay(date);
 
     while (1) {
         counter++;
-        var isPalindrome = checkPalindromeForAll(nextDay);
+        let isPalindrome = checkPalindromeForAll(nextDay);
         if (isPalindrome) {
             break;
         }
@@ -213,13 +214,13 @@ function checkNextPalindrome(date) {
 }
 
 
-function checkPalindromeForAll(date) {
+const checkPalindromeForAll = date=> {
 
-    var allFormatsList = getAllDateFormats(date);
+    let allFormatsList = getAllDateFormats(date);
 
-    var flag = false;
+    let flag = false;
 
-    for (var i = 0; i < allFormatsList.length; i++) {
+    for (let i = 0; i < allFormatsList.length; i++) {
         if (isPalindrome(allFormatsList[i])) {
             flag = true;
             break;
@@ -232,8 +233,8 @@ function checkPalindromeForAll(date) {
 
 
 
-function isPalindrome(str) {
-    var reversed = reverseString(str);
+const isPalindrome = str => {
+    let reversed = reverseString(str);
     if (str === reversed) {
         return true;
     } else {
@@ -243,19 +244,19 @@ function isPalindrome(str) {
 
 
 
-function convertDateToString(date) {
+const convertDateToString =date => {
 
-    var dateStr = { day: '', month: '', year: '' };
+    let dateStr = { day: '', month: '', year: '' };
 
     if (date.day < 10) {
-      dateStr.day = '0' + date.day;
+      dateStr.day = `0${date.day}`;
     }
     else {
       dateStr.day = date.day.toString();
     }
   
     if (date.month < 10) {
-      dateStr.month = '0' + date.month;
+      dateStr.month = `0${date.month}`;
     }
     else {
       dateStr.month = date.month.toString();
@@ -266,15 +267,15 @@ function convertDateToString(date) {
   }
 
 
-function getAllDateFormats(date) {
-    var dateStr = convertDateToString(date);
+const getAllDateFormats = date=> {
+    let dateStr = convertDateToString(date);
 
-    var ddmmyyyy = dateStr.day + dateStr.month + dateStr.year;
-    var mmddyyyy = dateStr.month + dateStr.day + dateStr.year;
-    var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
-    var ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);
-    var mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
-    var yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
+    let ddmmyyyy = dateStr.day + dateStr.month + dateStr.year;
+    let mmddyyyy = dateStr.month + dateStr.day + dateStr.year;
+    let yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
+    let ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);
+    let mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
+    let yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
 
     return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
 }
